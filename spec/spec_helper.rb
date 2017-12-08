@@ -12,3 +12,7 @@ RSpec.configure do |config|
     c.syntax = :expect
   end
 end
+
+def support_file_location(file_name)
+  File.expand_path(File.join(File.dirname(__FILE__),"support"),file_name)
+end
