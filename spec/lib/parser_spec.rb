@@ -46,4 +46,27 @@ RSpec.describe Ds18b20::Parser do
       end
     end
   end
+
+  context "there is an invalid file" do
+    describe ".get_temperature_celsius" do
+      it "raises an invalid file error" do
+        expect(invalid_sample_1.get_temperature_celsius).to raise_error Ds18b20::InvalidFileSpecified
+        expect(invalid_sample_2.get_temperature_celsius).to raise_error Ds18b20::InvalidFileSpecified
+      end
+    end
+    
+    describe ".get_temperature_fahrenheit" do
+      it "raises an invalid file error" do
+        expect(invalid_sample_1.get_temperature_fahrenheit).to raise_error Ds18b20::InvalidFileSpecified
+        expect(invalid_sample_2.get_temperature_fahrenheit).to raise_error Ds18b20::InvalidFileSpecified
+      end
+    end
+    
+    describe ".get_temperature_kelvin" do
+      it "raises an invalid file error" do
+        expect(invalid_sample_1.get_temperature_kelvin).to raise_error Ds18b20::InvalidFileSpecified
+        expect(invalid_sample_2.get_temperature_kelvin).to raise_error Ds18b20::InvalidFileSpecified
+      end
+    end
+  end
 end
