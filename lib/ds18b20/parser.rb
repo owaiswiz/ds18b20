@@ -1,0 +1,69 @@
+require 'ds18b20/exceptions'
+module Ds18b20
+  class Parser
+
+    ERROR_READINGS = [85000,127687]
+    MAXIMUM_RETRIES = 5
+
+    def initialize(file_location)
+      @file_location = file_location
+      @retries = 0
+    end
+
+    def get_temperature_celsius
+      get_temperature_from_file
+    end
+
+    def get_temperature_fahrenhiet
+
+    end
+
+    def get_temperature_kelvin
+
+    end
+
+
+    private
+    def get_temperature_from_file
+      data = read_file.split("\n")[1].split
+      raw_hex = (data[1][1] + data[0]).hex
+      reading_int = data.last.split("=").last.to_i
+      
+      if ERROR_READINGS.include?(reading_int)
+        raise Ds18b20::InvalidReadingError 
+      end
+
+      if raw_hex < 2048
+        # The result is positive and can be returned 
+        # after dividing by 16      
+        return raw_hex/16.0
+      else
+        # The result is negative and can be returned 
+        # after taking 2's complement and dividing by 16
+        return -(twos_complement(raw_hex)/16.0)
+      end
+
+    rescue Ds18b20::InvalidReadingError
+      if @retries < MAXIMUM_RETRIES
+        @retries += 1
+        sleep 0.1
+        retry
+      else
+        raise Ds18b20::InvalidReadingError
+      end
+    end
+
+    def read_file
+      file = File.read(@file_location)
+      if file && file.include?("t=")
+        return file
+      end
+      raise Ds18b20::InvalidFileSpecifiedError
+    end
+
+    def twos_complement_12_bit(number)
+      (number ^ ((1<<12) - 1)) + 1
+    end
+  end
+end
+
