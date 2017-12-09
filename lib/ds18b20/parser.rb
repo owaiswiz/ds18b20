@@ -14,12 +14,12 @@ module Ds18b20
       get_temperature_from_file
     end
 
-    def get_temperature_fahrenhiet
-
+    def get_temperature_fahrenheit
+      (get_temperature_from_file * 9/5.0) + 32
     end
 
     def get_temperature_kelvin
-
+      get_temperature_from_file + 273.15
     end
 
 
@@ -61,7 +61,7 @@ module Ds18b20
       raise Ds18b20::InvalidFileSpecifiedError
     end
 
-    def twos_complement_12_bit(number)
+    def twos_complement(number)
       (number ^ ((1<<12) - 1)) + 1
     end
   end
