@@ -14,5 +14,5 @@ RSpec.configure do |config|
 end
 
 def support_file_location(file_name)
-  File.expand_path(File.join(File.dirname(__FILE__),"support"),file_name)
+  File.expand_path(File.join(File.dirname(__FILE__),"support/#{file_name}"),)
 end
