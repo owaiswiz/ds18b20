@@ -1,7 +1,7 @@
 # DS18B20
 
 
-[![Build Status](https://travis-ci.org/owaiswiz/ds18b20.svg?branch=master)](https://travis-ci.org/owaiswiz/ds18b20)
+[![Build Status](https://travis-ci.org/owaiswiz/ds18b20.svg?branch=master)](https://travis-ci.org/owaiswiz/ds18b20) [![Gem Version](https://badge.fury.io/rb/ds18b20.svg)](https://badge.fury.io/rb/ds18b20) [![Gem](https://img.shields.io/gem/dt/ds18b20.svg?colorB=brightgreen&maxAge=3600)]() 
 
 
 This gem makes interfacing with the DS18B20 temperature easier over 1-Wire.
