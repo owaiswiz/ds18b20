@@ -1,8 +1,8 @@
-NOTE: In Development
+# DS18B20
+
 
 [![Build Status](https://travis-ci.org/owaiswiz/ds18b20.svg?branch=master)](https://travis-ci.org/owaiswiz/ds18b20)
 
-# DS18B20
 
 This gem makes interfacing with the DS18B20 temperature easier over 1-Wire.
 
@@ -31,7 +31,35 @@ Or install it yourself as:
 
 ## Usage
 
-In-development
+### 1. Require
+
+```ruby
+require 'ds18b20'
+```
+
+
+### 2. Create Instance with Proper File Path
+
+```ruby
+sensor = Ds18b20::Parser.new("/sys/bus/w1/devices/28-800000048d57/w1_slave")
+```
+
+
+### 3. Getting Temperature
+
+```ruby
+sensor.celsius
+#=> 28.5625
+
+
+sensor.fahrenheit
+#=> 82.0625
+
+
+sensor.kelvin
+#=> 300.9
+```
+
 
 ## Development
 
