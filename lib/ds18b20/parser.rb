@@ -25,11 +25,12 @@ module Ds18b20
 
     private
     def get_temperature_from_file
-      data = read_file.split("\n")[1].split
+      content = read_file
+      data = content.split("\n")[1].split
       raw_hex = (data[1][1] + data[0]).hex
       reading_int = data.last.split("=").last.to_i
       
-      if ERROR_READINGS.include?(reading_int)
+      if ERROR_READINGS.include?(reading_int) || content.include?("crc=00 NO") 
         raise Ds18b20::InvalidReadingError 
       end
 

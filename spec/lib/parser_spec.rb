@@ -5,8 +5,9 @@ RSpec.describe Ds18b20::Parser do
   let(:valid_sample_positive_24_187C) { described_class.new support_file_location("valid_sample_positive_24_187C") }
   let(:valid_sample_negative_10_125C) { described_class.new support_file_location("valid_sample_negative_10_125C") }
   let(:invalid_sample_1)              { described_class.new support_file_location("invalid_sample_1") }
-  let(:invalid_reading_sample_1)              { described_class.new support_file_location("invalid_reading_sample_1") }
-  let(:invalid_reading_sample_2)              { described_class.new support_file_location("invalid_reading_sample_2") }
+  let(:invalid_reading_sample_1)      { described_class.new support_file_location("invalid_reading_sample_1") }
+  let(:invalid_reading_sample_2)      { described_class.new support_file_location("invalid_reading_sample_2") }
+  let(:invalid_reading_sample_3)      { described_class.new support_file_location("invalid_reading_sample_3") }
 
   context "there is a valid file with a positive temperature" do
     describe ".get_temperature_celsius" do
@@ -54,6 +55,7 @@ RSpec.describe Ds18b20::Parser do
         expect { invalid_sample_1.get_temperature_celsius }.to raise_error Ds18b20::InvalidFileSpecifiedError
         expect { invalid_reading_sample_1.get_temperature_celsius }.to raise_error Ds18b20::InvalidReadingError
         expect { invalid_reading_sample_2.get_temperature_celsius }.to raise_error Ds18b20::InvalidReadingError
+        expect { invalid_reading_sample_3.get_temperature_celsius }.to raise_error Ds18b20::InvalidReadingError
       end
     end
     
@@ -62,6 +64,7 @@ RSpec.describe Ds18b20::Parser do
         expect { invalid_sample_1.get_temperature_fahrenheit }.to raise_error Ds18b20::InvalidFileSpecifiedError
         expect { invalid_reading_sample_1.get_temperature_fahrenheit }.to raise_error Ds18b20::InvalidReadingError
         expect { invalid_reading_sample_2.get_temperature_fahrenheit }.to raise_error Ds18b20::InvalidReadingError
+        expect { invalid_reading_sample_3.get_temperature_fahrenheit }.to raise_error Ds18b20::InvalidReadingError
       end
     end
     
@@ -70,6 +73,7 @@ RSpec.describe Ds18b20::Parser do
         expect { invalid_sample_1.get_temperature_kelvin }.to raise_error Ds18b20::InvalidFileSpecifiedError
         expect { invalid_reading_sample_1.get_temperature_kelvin }.to raise_error Ds18b20::InvalidReadingError
         expect { invalid_reading_sample_2.get_temperature_kelvin }.to raise_error Ds18b20::InvalidReadingError
+        expect { invalid_reading_sample_3.get_temperature_kelvin }.to raise_error Ds18b20::InvalidReadingError
       end
     end
   end
