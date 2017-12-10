@@ -3,7 +3,7 @@ module Ds18b20
   class Parser
 
     ERROR_READINGS = [85000,127687]
-    MAXIMUM_RETRIES = 5
+    MAXIMUM_RETRIES = 3
 
     def initialize(file_location)
       @file_location = file_location
@@ -53,6 +53,7 @@ module Ds18b20
         sleep 0.1
         retry
       else
+        @retries = 0
         raise Ds18b20::InvalidReadingError
       end
     end
