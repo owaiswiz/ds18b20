@@ -22,6 +22,9 @@ module Ds18b20
       get_temperature_from_file + 273.15
     end
 
+    alias_method :celsius, :get_temperature_celsius
+    alias_method :fahrenheit, :get_temperature_fahrenheit
+    alias_method :kelvin, :get_temperature_kelvin
 
     private
     def get_temperature_from_file
