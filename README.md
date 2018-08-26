@@ -11,7 +11,7 @@ After setting it up correctly make sure you have the correct file path where it'
 The file name on raspberry pi should be `w1_slave`. If you don't know where the file is located - please read : [DS18B20 - Temperature Sensing](https://learn.adafruit.com/adafruits-raspberry-pi-lesson-11-ds18b20-temperature-sensing?view=all).
 
 
-After making sure that you have the file path and that output looks similar to one in the tutorial above, you can easily use this gem following the instructions below (not yet released - soon).
+After making sure that you have the file path and that output looks similar to one in the tutorial above, you can easily use this gem following the instructions below.
 
 ## Installation
 
